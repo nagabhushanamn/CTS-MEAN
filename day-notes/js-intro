@@ -1,0 +1,106 @@
+
+JS with HTML
+----------------
+
+what js can do on HTML page ?
+
+
+using DOM API
+
+  --> can create/retreive/update/delete HTML element's
+  --> can change element's style
+  --> can change element's attributes
+  --> can change element's text content
+  
+ using XHR API
+ 
+  --> can communicate with server async
+  
+  ------------
+  
+  --> can create RICH UI componets
+  
+  --> can bring any HTML-5 APIs functionalities
+  
+      e.g  canvas , audio/video , local-storage , ws , GEO ..
+      
+     etc....
+     
+     
+     ------------------
+     
+     JS  using WEB-APIs can bring/provide any functionality to HTML page
+     
+     WEB-APIs
+     
+         DOM
+         XHR
+         TIMER
+         
+         HTML-5 APIS 
+  
+       ------------------
+       
+       
+       how js even working in browser envi ?
+       
+       what is JS ?
+       
+       --> single-threaded , non-blocking , concurrent , async
+       
+       ------------------------------------
+       
+       browser   e.g chrome
+       
+         1.JS-Runtime  ( v8 )
+         
+            STACK  --> execution-context
+            HEAP   --> objects
+       
+         2.callback-queue
+         3.event-loop
+         
+         4.web-APIS
+         
+       ------------------------------------
+       
+       Plain-JS + WEB APIs 
+       
+       
+       Limitations on plain-JS :-
+       
+       --> browser compatibility
+       --> too much script even for simple operations
+       --> performance
+       --> memory management
+       
+       
+       Solns :
+       
+             JS-libraries + JS F.ws
+             
+             
+        JS - library
+        
+        --> jQuery     
+            
+            
+       Limitations on Jquery
+       
+       --> code oraganization too difficult.
+       --> too low-level
+       
+       JS F.Ws  ( MVC / MVVM )
+       
+       --> backbone JS
+       --> Angular JS --> googl team
+       --> EmberJS
+       --> KO
+       
+       --> ReactJS
+       --> DOJO
+       --> EXTJS
+       
+       etc....
+     
+     --------------------------------  

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 10px;
+margin: 15px;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="container" data-ng-app="demoApp">
+
+		<div class="page-header">NG- scopes</div>
+	
+		ng-app:-<span class="badge">{{message}}</span> 
+		<button ng-click="changeMessage()">changeMessgae()</button>
+		
+		<div ng-controller="ExControlller">
+		ExControlller-<span class="badge">{{message}}</span>
+		<button ng-click="changeMessage()">changeMessgae()</button>
+		</div>
+		
+		<div ng-controller="ExControlller">
+		ExControlller-<span class="badge">{{message}}</span>
+		<button ng-click="changeMessage()">changeMessgae()</button>
+			<div ng-controller="AnotherControlller">
+			AnotherControlller-<span class="badge">{{message}}</span>
+			</div>
+		</div>
+
+	</div>
+	
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+		var appModule = angular.module('demoApp', []);
+		appModule.run(function($rootScope) {
+			$rootScope.message = 'ROOT';
+			$rootScope.changeMessage=function(){
+				console.log('changing $rootScope.message');
+				$rootScope.message='NEW ROOT';
+			};
+			
+		});
+		appModule.controller('ExControlller', function($scope) {
+			
+			$scope.changeMessage=function(){
+				console.log('changing $scope.message');
+				$scope.message='NEW CHILD';
+			};
+			
+		});
+		appModule.controller('AnotherControlller', function($scope) {
+			
+		});
+	</script>
+
+
+
+</body>
+</html>
