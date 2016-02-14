@@ -1,0 +1,83 @@
+
+
+ what is JS ?
+ 
+ --> scripting lang for web-pages in browser-envi
+ +
+ --> server-side programming lang ( Node JS )
+ --> stand-alone appln
+ --> mobile appln
+ --> commnad-line tools  
+ --> test-cases  
+ 
+ ---------------------------------------------
+ 
+ Features of JS
+ 
+ --> functional programming lang.
+ --> oo lang
+ 
+ --> it supports dynamic data-types
+ --> it supports 'closures'
+ 
+ --> single-threaded lang
+ --> it supports concurrency
+ 
+ callback , asyncronous
+ 
+ --> Intepreted lang.
+ 
+ ----------------------------------------------
+ 
+ where/when shud i use JS ?
+ 
+ 
+ event-driven , asyncronous processing appln.
+ 
+ ----------------------------------------------
+ 
+  JS is an implementation of ECMAScript spec 
+  
+  latest : ES6 release
+  --------------------------------------------
+  
+ 
+ How to execute JS programs ?
+ 
+   --> we need 'JS Runtime/Engine'
+   
+   e.g
+   
+     chrome  --> V8 engine
+ 
+      others
+      
+      rhino
+      
+      JVM --> nashorn
+      
+      Apache CouchDB
+      
+    --------------------------------------------
+    
+    
+    
+    JS - learn
+    ---------------
+    
+    
+    JS Data-Structures/ DataTypes / variables
+    -----------------------------------------
+       
+       
+       a. simple types  or primitives
+       
+          5 types
+          
+          1. string
+          2. number
+          3. boolean
+          4. undefined
+          5. null
+       
+       b. reference types or objects
