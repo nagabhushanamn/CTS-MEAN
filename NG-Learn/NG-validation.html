@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+input.ng-dirty.ng-invalid{
+border: 1px solid red;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="container" data-ng-app="demoApp">
+
+		<div class="page-header"> NG Form-Validation</div>
+		
+		<div class="row">
+			<div class="col-md-6">
+			
+				<form name="loginForm" novalidate ng-controller="LoginController" ng-submit="loginForm.$valid&&doLogin()">
+					<div class="form-group">
+						<label>Username</label>
+						<input name="uname" type="email" class="form-control" ng-model="user.userName" required>
+						<span ng-show="loginForm.uname.$dirty&&loginForm.uname.$error.required" class="text-danger">Required!!</span>
+						<span ng-show="loginForm.uname.$dirty&&loginForm.uname.$error.email" class="text-danger">Invalid Email!!</span>
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<input name="pword" type="password" class="form-control" ng-model="user.password" required ng-minlength="3" ng-maxlength="6">
+						<span ng-show="loginForm.pword.$dirty&&loginForm.pword.$error.required" class="text-danger">Required!!</span>
+						<span ng-show="loginForm.pword.$dirty&&loginForm.pword.$error.minlength" class="text-danger">Too Short!!</span>
+						<span ng-show="loginForm.pword.$dirty&&loginForm.pword.$error.maxlength" class="text-danger">Too Long!!</span>
+					</div>
+					<button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Sign-in</button>
+					
+					<br/>
+					is loginForm pristine : {{loginForm.$pristine}}
+					<br/>
+					is loginForm dirty    : {{loginForm.$dirty}}
+					<br/>
+					is loginForm invalid  : {{loginForm.$invalid}}
+				    <br/>
+				    is loginForm valid    : {{loginForm.$valid}}
+					
+				</form>
+				
+				
+			</div>
+		</div>
+
+	</div>
+	
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+		var appModule = angular.module('demoApp', []);
+		appModule.controller('LoginController', function($scope) {
+			$scope.doLogin=function(){
+				console.log('doing login...');
+			}
+		})
+		
+	</script>
+
+
+
+</body>
+</html>

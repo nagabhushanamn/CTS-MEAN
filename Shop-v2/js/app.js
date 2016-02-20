@@ -5,16 +5,30 @@
 var storeModule = angular.module('store', []);
 
 // Controller
-storeModule.controller('StoreController', function($scope,$filter) {
-	// logic/behav
-	//this.product = item;
-	//$scope.product=item;  // View Model  // request.setAttribute('product',item)
+storeModule.controller('StoreController', function($scope) {
 	$scope.products=items;
-	
-	//console.log($filter('uppercase')('nag'));
-	//console.log($filter('priceDiscount')(10000,1000));
-	
 });
+
+storeModule.controller('TabsController', function($scope) {
+	$scope.tab=1; // ng-init="tab=1"
+	$scope.changeTab=function(tabValue){
+		$scope.tab=tabValue;
+	};
+	$scope.isTabSelected=function(tabValue){
+		return $scope.tab===tabValue;
+	};
+});
+
+storeModule.controller('ReviewFormController', function($scope) {
+	$scope.newReview={author:'nag@gmail.com'};
+	$scope.addNewReview=function(product){
+		// send to server..
+		// 
+		product.reviews.push($scope.newReview);
+		$scope.newReview={author:'nag@gmail.com'};
+	};
+});
+
 
 // Filter
 storeModule.filter('priceDiscount', function() {
@@ -36,7 +50,11 @@ var items = [{
 	description : 'New Model',
 	canBuy:true,
 	notAvailable:false,
-	make:Date.now()
+	make:Date.now(),
+	reviews:[
+	         {stars:'5',author:'nag@gmail.com',body:'good one..'},
+	         {stars:'2',author:'indu@gmail.com',body:'bad one..'}
+	         ]
 },
 {
 	name : 'Mobile',
@@ -44,7 +62,11 @@ var items = [{
 	description : 'New Model',
 	canBuy:true,
 	notAvailable:false,
-	make:Date.now()
+	make:Date.now(),
+	reviews:[
+	         {stars:'5',author:'nag@gmail.com',body:'good one..'},
+	         {stars:'2',author:'indu@gmail.com',body:'bad one..'}
+	         ]
 }];
 
 

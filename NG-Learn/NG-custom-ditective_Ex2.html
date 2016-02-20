@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 15px;
+margin: 10px;
+}
+</style>
+</head>
+<body>
+
+	
+
+	<div class="container" ng-app="demoApp">
+	
+		<div class="page-header">NG - Custom Directive(s)</div>
+
+			<div ng-controller="ColorController">
+			
+				<input ng-model="color">
+				
+				<hr/>
+				
+				<my-world my-color="grey"></my-world>
+				
+				<my-world></my-world>
+				
+			
+			</div>
+				
+		<hr/>
+	
+	</div>
+
+
+	<script type="text/javascript" src="jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+	var demoApp=angular.module('demoApp',[]);
+	
+	demoApp.controller('ColorController',function($scope){
+		$scope.color='yellow';
+	});
+	
+	demoApp.directive('myWorld', function(){
+		return{
+			restrict: "E",
+			replace:true,
+			scope:true,
+			templateUrl:'my-world.html',
+			link:function(scope,jqEle,attr){
+				
+				//console.log(scope.color);
+				//scope.color='grey';
+				
+				//console.log(jqEle);
+				
+				jqEle.addClass('ng-scope');
+				
+				jqEle.on('mouseover',function(){
+					jqEle.css('cursor','pointer');
+				});
+				jqEle.on('click',function(){
+					console.log('changing scope.color');
+					scope.color='#fff';
+					scope.$apply();
+				});
+				
+				if(attr.myColor){
+					scope.color=attr.myColor;
+				}
+				
+			}
+		};
+	});
+	
+	</script>
+
+
+	
+	<script type="text/javascript" src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+	
+	<script type="text/javascript">
+	/* 	$(function(){
+			$('input', '.container').datepicker();
+		});
+ 	 */	
+ 	</script>
+
+
+</body>
+</html>

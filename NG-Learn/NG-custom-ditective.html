@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	
+
+	<div class="container" ng-app="demoApp">
+	
+		<div class="page-header">NG - Custom Directive(s)</div>
+	
+			<div data-my-world></div>
+			<div my:world></div>
+			
+			<hr/>
+
+			<my-world></my-world>		
+			<my:world></my:world>	
+			
+			
+			<hr/>
+			
+			<div class="my-world"></div>
+			
+			<hr/>
+			
+				
+		<hr/>
+	
+	</div>
+
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+	var demoApp=angular.module('demoApp',[]);
+	
+	demoApp.directive('myWorld', function(){
+		return{
+			restrict: "AEC",
+			replace:true,
+			template: "<h4>NG World</h4>"
+		};
+	});
+	
+	</script>
+
+
+	<script type="text/javascript" src="jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+	
+	<script type="text/javascript">
+	/* 	$(function(){
+			$('input', '.container').datepicker();
+		});
+ 	 */	
+ 	</script>
+
+
+</body>
+</html>

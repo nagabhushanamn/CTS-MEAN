@@ -1,0 +1,65 @@
+
+
+ How NG doing 2-way data-binding ?
+ 
+   NG- Life-cycle
+   ---------------
+   
+   a. NG compilation-phase
+   
+      on every DOM element which are having(binded) with directives/expression
+      will register 'watch' expression(s) ( listeners ) -> functions
+      
+      watch expressions--->read/write model
+      
+      all 'watch' expression(s) are executed by 'digest-loop'
+      
+      ------------
+      
+      we can also register 'custom' watch expression'
+      
+      ---------------------------
+      
+   ===================================================
+   
+   
+   NG - Form Validation
+   
+   --> by default angular automatically validate every form in NG-APP
+   
+       using
+       
+           either HTML-5 validation attributes or NG validation directives
+   
+   
+       and it keep form/form-field in following after validation
+       
+       pristine  --> when fields are not interacted by end-user
+       dirty     --> when being used
+       invalid   --> when it fails to satisy validation-ruls
+       valid     --> with valid input
+       
+       untouched
+       touched
+       
+       -----------------------------------------------------
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+      

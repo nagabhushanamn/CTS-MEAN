@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	
+
+	<div class="container" ng-app="demoApp"">
+	
+	<div class="page-header">NG - Databinding</div>
+	
+		<div ng-controller="UserController">
+		
+		<input ng-model="user">
+		
+		<button ng-click="resetUser()">Reset ( ng-click )</button>
+		<button ng-click="getFullUser()">FullName ( ng-click )</button>
+		<button onclick="window.getFullUser()">FullName ( on-click )</button>
+		
+		<hr/>
+		
+		Hello <span id="userSpan" ng-bind="user"></span>
+		
+		</div>
+	
+	</div>
+
+
+
+	<script type="text/javascript">
+		
+	 /* 
+	 
+	 var user=document.querySelector('#user');
+	 var userSpan=document.querySelector('#userSpan');
+	 var resetBtn=document.querySelector('#resetBtn');
+	 var fullNameBtn=document.querySelector('#fullNameBtn');
+	 
+	 user.addEventListener('keyup', function(e) {
+	 userSpan.innerHTML=this.value;	
+	 });
+	 resetBtn.addEventListener('click', function(e) {
+		 user.value='';
+		 userSpan.innerHTML='';	
+	 });
+	 fullNameBtn.addEventListener('click', function(e) {
+		 user.value='Nagabhushanam';
+		 userSpan.innerHTML='Nagabhushanam';	
+	 });
+	 
+	 */
+	</script>
+	
+	
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+	var demoApp=angular.module('demoApp', []);
+	demoApp.controller('UserController', function($scope) {
+		
+		$scope.user=''; // Model
+		
+		$scope.resetUser=function(){
+			$scope.user='';
+		};
+		$scope.getFullUser=function(){
+			$scope.user='Nagabhushanam';
+		};
+		
+		window.getFullUser=function(){
+			console.log('getting full name..');
+			$scope.user='Nagabhushanam';
+			//$scope.$apply();  // triggering digest-loop
+		};
+		
+		// custom watch expression
+		$scope.$watch('user',function(newValue,oldValue){
+			console.log('digest loop running... $scope.user watch exp running..');
+			console.log('New Value :'+newValue);
+			console.log('Old value :'+oldValue);
+		});
+		
+	});
+	</script>
+	
+	
+	
+	
+	
+
+
+
+</body>
+</html>
