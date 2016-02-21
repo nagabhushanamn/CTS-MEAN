@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope{
+border: 1px solid red;
+padding: 15px;
+margin: 10px;
+}
+</style>
+</head>
+<body>
+
+	
+
+	<div class="container" ng-app="demoApp">
+	
+		<div class="page-header">NG - Services</div>
+
+		<div ng-controller="HitController">
+			<button class="btn btn-default" ng-click="doHit()">Hit</button>  <span class="badge">{{count}}</span>
+			<button class="btn btn-default" ng-click="doHit()">Hit</button>  <span class="badge">{{count}}</span>
+		</div>
+		<div ng-controller="HitController">
+			<button class="btn btn-default" ng-click="doHit()">Hit</button>  <span class="badge">{{count}}</span>
+		</div>
+		<div ng-controller="KickController">
+			<button class="btn btn-default" ng-click="doKick()">Kick</button>  <span class="badge">{{count}}</span>
+		</div>
+				
+		<hr/>
+	
+	</div>
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+	var demoApp=angular.module('demoApp',[]);
+	
+	demoApp.config(function(countServiceProvider){
+		console.log('app config phase...');
+		countServiceProvider.setInitCount(100);
+	});
+	
+	demoApp.controller('HitController', function($scope,countService) {   // DI
+		console.log('New HitController instance created...');
+		$scope.count=countService.getCount();
+		$scope.doHit=function(){
+			//$scope.count+=1;
+			countService.doCount();
+			$scope.count=countService.getCount();
+		}
+	});
+	
+	demoApp.controller('KickController', function($scope,countService) {
+		console.log('New KickController instance created...');
+		$scope.count=countService.getCount();
+		$scope.doKick=function(){
+			//$scope.count+=1;
+			countService.doCount();
+			$scope.count=countService.getCount();
+		}
+	});
+	
+	//--------------------------------------------------------
+	
+	/*
+	  provider : serviceProvider
+	  service  : service
+	*/
+	
+	
+/* 	demoApp.provider('countService', function() {
+		var count=0;
+		this.setInitCount=function(initCount){
+			count=initCount;
+		}
+		this.$get=function(){
+			console.log('creating/registering countService componnent by $injector')
+			return{
+				doCount:function(){
+					count++;
+				},
+				getCount:function(){
+					return count;
+				}
+			};
+		};
+	});  */
+	
+	//--------------------------------------------------------
+	
+	// short-cuts methods to create 'service' comp
+	
+	/* demoApp.factory('countService',function(){
+		
+		var count=0;
+		return{
+			doCount:function(){
+				count++;
+			},
+			getCount:function(){
+				return count;
+			}
+		};
+		
+	}); */
+	
+	//--------------------------------------------------------
+	
+	// CF
+	/* function Counter(){
+		console.log('New Counter instance created as service');
+		this.count=0;
+		this.doCount=function(){
+			this.count++;
+		}
+		this.getCount=function(){
+			return this.count;
+		}
+	};	
+	
+	demoApp.service('countService',Counter); */
+	
+	//--------------------------------------------------------
+	
+	/* var counter={
+			count:0,
+			doCount:function(){
+				this.count++;
+			},
+			getCount:function(){
+				return this.count;
+			}
+		};
+	demoApp.value('counService',counter); */
+	
+	//--------------------------------------------------------
+	
+	</script>
+
+
+</body>
+</html>

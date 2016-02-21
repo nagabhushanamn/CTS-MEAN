@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+input.ng-dirty.ng-invalid{
+border: 1px solid red;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="container" data-ng-app="demoApp">
+
+		<div class="page-header"> NG - Promise API</div>
+		
+		<div ng-controller="TrainerController"></div>
+
+	</div>
+	
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+		var appModule = angular.module('demoApp', []);
+		appModule.controller('TrainerController', function($scope,hotelService) {
+			console.log('hugnry...requesting food');
+			var promise=hotelService.getFood();
+			console.log('got promise...');
+			promise.then(function(food) {
+				console.log('yummy...'+food);
+			}, function(reason) {
+				console.log('ooops '+reason);
+			}, function(progress) {
+				console.log("update "+progress);
+			});
+			
+			console.log('continue with other work...');
+		});
+		
+		appModule.factory('hotelService', function($q) {
+			return{
+				getFood:function(){
+					var def=$q.defer();
+					setTimeout(function(){
+						def.resolve('BIRYANNNI>>>');
+						//def.reject('SORRRY>>>')
+					},10000);
+					setTimeout(function(){
+						def.notify('ON THE WAY>>>>>');
+					},5000);
+					return def.promise;
+				}
+			};
+		});
+		
+	</script>
+
+
+
+</body>
+</html>
