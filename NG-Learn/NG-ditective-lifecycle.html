@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 15px;
+	margin: 10px;
+}
+</style>
+</head>
+<body>
+
+
+
+	<div class="container" ng-app="demoApp">
+
+		<div class="page-header">NG -Directive - LifeCycle</div>
+
+		<div hello-world></div>
+
+		<hr />
+
+	</div>
+
+
+	<script type="text/javascript" src="jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+		var demoApp = angular.module('demoApp', []);
+		demoApp.run(function($rootScope) {
+			$rootScope.name = 'Nag';
+		});
+
+		demoApp.directive('helloWorld', function() {
+			return {
+				restrict : "AE",
+				compile : function(tElement, tAttr) {
+					console.log('compile...');
+					angular.element(tElement).append("My name is {{name}}");
+				},
+				controller : function() {
+
+				},
+				link : function() {
+
+				}
+			};
+		});
+	</script>
+
+
+
+
+</body>
+</html>

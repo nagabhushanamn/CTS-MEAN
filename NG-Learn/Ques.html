@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 10px;
+	margin: 15px;
+}
+</style>
+</head>
+<body>
+
+
+	<div class="container" data-ng-app="demoApp">
+
+		<div class="page-header">NG- scopes</div>
+
+		<div ng-controller="ExControlller">
+			<input ng-model="value">
+			<button ng-click="addItem()">Add Item</button>
+			<hr/>
+			<ol>
+				<li ng-repeat="item in items">{{item}}</li>
+			</ol>
+		</div>
+
+	</div>
+
+
+
+	<script type="text/javascript" src="angular-1.4.8/angular.js"></script>
+	<script type="text/javascript">
+		var appModule = angular.module('demoApp', []);
+		
+		appModule.controller('ExControlller', function($scope,someService) {
+			
+			/* $scope.model={value:0,Array:[]};
+			$scope.addItem=function(){
+				$scope.mode.Array.push($scope.model.value);
+			} */
+			
+			$scope.value='';
+			$scope.addItem=function(){
+				$scope.items=someService.addItem($scope.value);
+				$scope.value='';
+			};
+			
+		});
+		
+		appModule.factory('someService', function() {
+			var arr=[];
+			return{
+				addItem:function(item){
+					arr.push(item);
+					return arr;
+				}
+			};
+		});
+		
+		
+	</script>
+
+
+
+</body>
+</html>

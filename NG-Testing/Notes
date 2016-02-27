@@ -1,0 +1,53 @@
+
+
+ NG _ Testing
+ --------------------
+ 
+ 
+ Dependency Injection ( DI )
+ 
+   module(s)
+   
+      component(s)
+      
+   
+    Test Driven Development ( TDD ) / Behav Driven Development ( BDD )
+    
+    
+    ------------------------------
+    
+    Unit-Testing
+    
+    End -to -End Testing
+    
+    -----------------------------
+    
+    
+    A. Unit Testing
+    ----------------
+    
+    
+     Unit Testing F.W
+     ----------------------
+     TestCases writing support
+     TestRunner
+    
+    f.w
+    
+      --> jasmine  ( focus )
+      --> mocha
+      --> qunit
+      --> nodeunit
+    
+    
+   B. End-End Testing
+   ---------------------------- 
+   
+    using jasmine , write e2e test-cases
+    
+    we need e2e angular test-runner ( Protractor )
+    
+    
+    
+    
+       
