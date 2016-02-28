@@ -1,0 +1,254 @@
+
+
+ what is NodeJs?
+ 
+ ->is a set of binding to the V8 javascript VM
+ ->allows one to script programs that do I/O in JS
+ ->Focused on performance.
+     
+ ----------------------------------------------
+ 
+ I/O needs to be done differently
+ 
+ 
+ Many web application have code like this
+ 
+ result=query("select * from from T); ...............
+ // use result
+ 
+ 
+ 
+ what is s/w doing while it queries database?
+ 
+ 
+ In many cases, just waiting for the response
+ 
+ 
+ -----------------------------------------------
+ 
+ 
+ Modern Computer Latency
+ 
+ 
+ L1:3 cycles
+ L2:14 cycles
+ RAM:250 cycles
+ 
+ ----------------
+ 
+ DISK:41,000,000 cycles
+ NETWORK:240,000,000 cycles
+ 
+ -------------------------------------------------
+ 
+ 
+ "Non-blocking"
+ L1,L2,RAM
+ 
+ --------------
+ 
+ "Blocking"
+ 
+ DISK,NETWORK
+ 
+ 
+ -----------------------------------------------
+ 
+ 
+ result=query("select * from  T ")
+ // use result
+ 
+ "BLOCKING"
+ 
+ -----------------------------------------------
+ 
+ 
+ Better s/w can multi-task/thread
+ 
+ A look at Apache and NGINX
+ https://blog.webfaction.com/2008/12/a-little-holiday-present-10000-reqssec-with-nginx-2/
+ 
+ 
+ The difference
+ 
+ Apache uses one thread connection
+ NGINX dosent use threads, it uses a 'event loop'
+ 
+ 
+ ------------------------------------
+ 
+ -> Context switching is not free
+ -> Execution stacks take up memory
+ 
+ For massive concurrency, cannot use an OS thread
+ for each connection
+ 
+ -----------------------------------
+ 
+ code like this
+ 
+ result=query("select...").....
+ // use result
+ 
+ either blocks the entire process or
+ implies multiple execution stacks
+ 
+ -----------------
+ 
+ But a line of code like this
+ 
+ query('select',function(result){
+ // use result
+ });
+ continue with work...
+ 
+ allows the program to return to the event loop
+ immediatly.
+ 
+ No machinery required
+ 
+ ---------------------------------
+ 
+  query('select',function(result){
+   // use result
+  });
+ 
+ this is how IO shud handle
+ 
+ ---------------------------------
+ 
+ 
+ so why isnt eveyone using event-loops,
+ callbacks, and non-blocking IO ?
+ 
+ ??  
+ 
+ ----------------------------------
+ 
+ we r taught IO with this:
+ 
+ puts("Enter ur name")
+ var name=gets();
+ puts("Name"+name);
+ 
+ we're taught to demand input and
+ do nothing untill we have it.
+ 
+ 
+ ----------------------------------
+ 
+ code like
+ 
+ puts("enter ur name");
+ gets(function(name){
+    puts("Name:"+name);
+ });
+ 
+ ......
+ 
+ is rejected as too complicated
+ 
+ -----------------------------------
+ 
+ Missing Infrastructure
+ 
+ so why isnt everyone using event loops?
+ 
+ single Threaded event loops required IO to be non-blocking
+ 
+ Most libraries are Not
+ 
+ --------------------------------------
+ 
+ Missing Infrastructure
+ 
+ -> POSIX async file I/O not available
+ -> No closures or async func in C/Java: makes callbacks difficult
+ -> database libraries do not provide support for async queries
+ -> Async DNS resolution not standard on most system
+ 
+ ---------------------------------------
+ 
+ Too Much Infrastructure
+ 
+ Users still require expert knowledge
+ of event loops,non-blocking I/O.
+ 
+ ----------------------------------------
+ 
+ 
+ JS designed spec to be used with an event-loop
+ 
+  -> anonymous functions,closure
+  -> only one callback at a time
+  -> IO thru DOM event callbacks
+  
+ ------------------------------------
+ 
+ JS is great in Evented programming
+ 
+ --------------------------------
+ 
+ Ryan Dhal
+ 
+ node.js project
+ 
+ provide a purely evented non-blocking infra
+ to script highly concurrent programs
+ 
+ --------------------------
+ 
+ design goals
+ 
+ #1
+ no func shud directly perform I/O.
+ 
+ #2
+ To receive info from disk,network,or
+ another process there must be a callback
+ 
+ #3
+ Low-level
+ 
+ Stream everything,never force the
+ buffering of Data
+ 
+ #4
+ 
+ have built-in support for the most important
+ protocols
+ 
+ $5
+ 
+ support many HTTP features
+ 
+ 
+ -----------------------------------
+ 
+ 
+ NodeJs Arhc
+ 
+ 
+     JavaScript       -----    Node Standard Lib
+     ---------------------------------------------
+     
+        C                        Node bindings
+                                
+                           V8    Thread-pools + EventLoop
+                                 (libeio)        (libev)
+     --------------------------------------------- 
+     
+  
+      JS layer can access the main-thread
+      
+      The C layer can use multiple threads
+      
+      ---------------------------------
+      
+      Jail users in non-blocking envi
+      
+      Dont allow I/O trickery
+      
+      There is exactly on execution stack in Node
+      
+       ---------------------------------
