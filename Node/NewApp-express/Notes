@@ -1,0 +1,29 @@
+
+
+REST API with ExpressJS
+-------------------------
+
+
+PM
+
+   REST API
+   -----------------------------------
+   
+   URI - /products
+   
+   GET /products
+   GET /products?start=0&size=10
+   GET /products/{id}
+   
+   
+   POST /products
+   
+   PUT /products/{id}
+   
+   DELETE /products/{id}
+   
+   
+   data representation ==> JSON
+   
+   
+   ------------------------------------

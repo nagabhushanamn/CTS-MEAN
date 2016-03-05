@@ -1,0 +1,67 @@
+
+
+ PM - admin
+ -----------
+ 
+   create
+   loadAll
+   edit
+   delete
+   
+   -----------------------------------
+   
+   
+   single-page application
+   
+ 
+    adv.
+    
+      --> can avoid multiple page re-loads
+      --> more responsive
+      --> save much n/w bandwidth
+      --> reduces heavy server-side processing
+      
+      --> best way to consume REST services
+      
+      
+    challenges
+    
+    
+      --> need to handle AJAX calls properly.
+      --> data ( XML or JSON ) parsing 
+      --> need to load/cache HTML templates properly
+      --> need to maintain browser history ( back / forward )
+      
+      soln
+      
+        use Angular-Routing Modules
+    
+        a. ngRoute    ( NG core team )
+        
+        b. ui.router  ( NG UI Team   )  ( advanced )
+    
+    
+    
+    ----------------------------------------------
+    
+  
+    
+    --> NG -> ui.router
+    --> $resource
+    --> $animate
+    ......
+    
+    --> Unit Testing
+    --> E2E Testing
+    
+    --> Performance tips
+    
+    
+    Node Introduction
+    
+    ---------------------------------
+    
+    
+    
+    
+      
