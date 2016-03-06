@@ -1,0 +1,47 @@
+[
+	{
+		"name": "Laptop",
+		"price": 148000,
+		"description": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"make": 1456074118266,
+		"reviews": 
+		[
+			{
+				"stars": "5",
+				"author": "nag@gmail.com",
+				"body": "good one.."
+			},
+
+			{
+				"stars": "2",
+				"author": "indu@gmail.com",
+				"body": "bad one.."
+			}
+		]
+	},
+
+	{
+		"name": "Mobile",
+		"price": 28000,
+		"description": "New Model",
+		"canBuy": true,
+		"notAvailable": false,
+		"make": 1456074118266,
+		"reviews": 
+		[
+			{
+				"stars": "5",
+				"author": "nag@gmail.com",
+				"body": "good one.."
+			},
+
+			{
+				"stars": "2",
+				"author": "indu@gmail.com",
+				"body": "bad one.."
+			}
+		]
+	}
+]
