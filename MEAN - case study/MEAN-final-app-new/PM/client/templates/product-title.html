@@ -1,0 +1,7 @@
+<div>
+	<span class="badge">{{$index+1}}</span>
+	<h4>{{product.name|uppercase}} <small>{{product.make|date:'yyyy'}}</small></h4>
+	<h4>{{product.price|priceDiscount:1000|currency:'&#8377;':1}}</h4>
+	<button ng-show="product.canBuy">Add to cart</button>
+				
+</div>

@@ -1,0 +1,17 @@
+<form name="reviewForm" 
+       novalidate
+       ng-submit="reviewForm.$valid && addNewReview(product)">
+ 	
+	
+ 	<div class="form-group">
+ 		<label>Rating</label>
+ 		<select ng-options="star for star in [1,2,3,4,5]" class="form-control" ng-model="newReview.rating" required></select>
+ 	</div>
+ 	<div class="form-group">
+ 		<label>body</label>
+ 		<textarea rows="5" cols="35" class="form-control" ng-model="newReview.comments" required></textarea>
+ 	</div>
+ 	
+ 	<button type="submit" class="btn btn-primary">Submit</button> is reviewForm : {{reviewForm.$valid}}
+ 
+ </form>
